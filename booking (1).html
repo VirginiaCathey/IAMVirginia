@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session | Virginia Cathey Collections</title>
+  <meta name="description" content="Book a session with Virginia Cathey: fashion, Shea & Shades, or financial education.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Scoped to booking.html only — inquiry form styling */
+    .bk-form { display: grid; gap: 20px; }
+    .bk-row { display: grid; gap: 8px; }
+    .bk-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 640px) { .bk-row-2 { grid-template-columns: 1fr; } }
+    .bk-label {
+      font-family: var(--f-body); font-size: .68rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .bk-input, .bk-select, .bk-textarea {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border);
+      color: var(--cream); font-family: var(--f-body); font-size: .95rem;
+      padding: 14px 16px; border-radius: 2px; transition: border-color .3s var(--ease);
+    }
+    .bk-input:focus, .bk-select:focus, .bk-textarea:focus {
+      outline: none; border-color: var(--purple-lt);
+    }
+    .bk-textarea { resize: vertical; min-height: 120px; font-family: inherit; }
+    .bk-select { appearance: none; cursor: pointer; }
+    .bk-submit {
+      justify-self: start; margin-top: 4px;
+      font-family: var(--f-display); padding: 16px 40px;
+    }
+    .bk-status {
+      font-size: .72rem; letter-spacing: .1em; color: var(--gold-lt);
+      display: none; text-align: center; margin-top: 16px;
+    }
+    .bk-status.show { display: block; }
+    .bk-fallback {
+      text-align: center; font-size: .7rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--muted); margin-top: 22px;
+    }
+    .bk-fallback a { color: var(--gold-lt); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="4.png" alt="Virginia Cathey Collections">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fashion.html">Fashion</a></li>
+    <li><a href="shea.html">Shea &amp; Shades</a></li>
+    <li><a href="finance.html">Finance</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+  <div class="nav-socials">
+    <a href="https://www.instagram.com/virginiacatheycollections" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/share/1MAkK8qsHK/" target="_blank" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@virginiacathey" target="_blank" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+    </a>
+  </div>
+  <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="fashion.html">Fashion</a>
+  <a href="shea.html">Shea &amp; Shades</a>
+  <a href="finance.html">Finance</a>
+  <a href="#contact">Connect</a>
+  <div class="mm-socials">
+    <a href="https://www.instagram.com/virginiacatheycollections" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="https://www.facebook.com/share/1MAkK8qsHK/" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.tiktok.com/@virginiacathey" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="hero" style="min-height:52vh;">
+  <div class="hero-overlay" style="background:linear-gradient(105deg,rgba(16,10,15,.97) 0%,rgba(26,58,92,.55) 50%,rgba(16,10,15,.28) 100%);"></div>
+  <div class="hero-body">
+    <p class="hero-eyebrow">Let's Connect</p>
+    <h1 class="hero-title" style="font-size:clamp(2.4rem,4vw,3.6rem);">Book a Session</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">Share a few quick details below, then pick a time that works for you.</p>
+  </div>
+</section>
+
+<!--
+  ============================================================
+  BOOKING FORM — submits directly to Google Forms in the
+  background (hidden iframe target), then auto-redirects to
+  thank-you.html. Visitor never leaves this page or sees any
+  Google UI. See setup instructions in the comment block
+  further down before this goes live.
+  ============================================================
+-->
+<section class="sec">
+  <div class="wrap reveal" style="max-width:760px;margin:0 auto;">
+
+    <form
+      id="bk-form"
+      class="bk-form"
+      action="PASTE_GOOGLE_FORM_RESPONSE_URL_HERE"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="document.getElementById('bk-submitted').value='true'; document.getElementById('bk-status').classList.add('show'); document.getElementById('bk-submit-btn').disabled=true; document.getElementById('bk-submit-btn').style.opacity='.6';">
+
+      <div class="bk-row-2">
+        <div class="bk-row">
+          <label class="bk-label" for="bk-name">Full Name</label>
+          <input class="bk-input" type="text" id="bk-name" name="entry.PASTE_NAME_ENTRY_ID" required>
+        </div>
+        <div class="bk-row">
+          <label class="bk-label" for="bk-email">Email</label>
+          <input class="bk-input" type="email" id="bk-email" name="entry.PASTE_EMAIL_ENTRY_ID" required>
+        </div>
+      </div>
+
+      <div class="bk-row-2">
+        <div class="bk-row">
+          <label class="bk-label" for="bk-phone">Phone</label>
+          <input class="bk-input" type="tel" id="bk-phone" name="entry.PASTE_PHONE_ENTRY_ID">
+        </div>
+        <div class="bk-row">
+          <label class="bk-label" for="bk-interest">I'm Interested In</label>
+          <select class="bk-select" id="bk-interest" name="entry.PASTE_INTEREST_ENTRY_ID" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="Fashion / Couture">Fashion / Couture</option>
+            <option value="Shea & Shades">Shea &amp; Shades</option>
+            <option value="Financial Education">Financial Education</option>
+            <option value="General / Not Sure Yet">General / Not Sure Yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bk-row">
+        <label class="bk-label" for="bk-message">A Bit About What You're Looking For</label>
+        <textarea class="bk-textarea" id="bk-message" name="entry.PASTE_MESSAGE_ENTRY_ID"></textarea>
+      </div>
+
+      <!-- This hidden field's real entry ID isn't needed — it's just here so the
+           row count matches your live form if you add one. Safe to delete if unused. -->
+      <input type="hidden" id="bk-submitted" name="bk_submitted_flag" value="false">
+
+      <button id="bk-submit-btn" type="submit" class="btn btn-gold bk-submit"><span>Send &amp; Continue</span></button>
+
+      <p id="bk-status" class="bk-status">Sending your details — you'll be moved to booking in a moment…</p>
+    </form>
+
+    <!-- Hidden target — form posts here so the page never navigates away.
+         onload fires once for the blank iframe on page load (ignored, since
+         bk-submitted is still false) and again after the real POST completes
+         (when the redirect actually happens). -->
+    <iframe
+      name="hidden_iframe"
+      id="hidden_iframe"
+      style="display:none;"
+      onload="if (document.getElementById('bk-submitted').value === 'true') { window.location.href = 'thank-you.html'; }">
+    </iframe>
+
+    <p class="bk-fallback">
+      Prefer to skip ahead? <a href="thank-you.html">Go straight to booking &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<!--
+  ============================================================
+  SETUP — do this once Virginia's Google Form exists:
+
+  1. Open the live Google Form, click the three-dot menu → "Get pre-filled link".
+  2. Fill in dummy answers for every field and click "Get link".
+  3. Open that pre-filled link and view page source (Ctrl+U / Cmd+Opt+U),
+     or just look at the URL — search for "entry.123456789" for each field.
+     Each field name in the pre-filled URL corresponds to one input above.
+  4. Replace each PASTE_..._ENTRY_ID above with the matching entry.XXXXXXX number.
+  5. Replace PASTE_GOOGLE_FORM_RESPONSE_URL_HERE in the <form action=""> with
+     the form's real submission URL — take the form's normal share link,
+     e.g. https://docs.google.com/forms/d/e/FORM_ID_HERE/viewform
+     and change "viewform" at the end to "formResponse".
+  6. Test it: submit the form, confirm a new row appears in the Form's
+     linked Google Sheet, and confirm the page redirects to thank-you.html.
+  ============================================================
+-->
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p class="footer-copy">Virginia Cathey Collections © 2026 · Brooklyn, New York</p>
+  <div class="footer-links">
+    <a href="fashion.html">Fashion</a>
+    <a href="shea.html">Shea &amp; Shades</a>
+    <a href="finance.html">Finance</a>
+  </div>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/virginiacatheycollections" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="https://www.facebook.com/share/1MAkK8qsHK/" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.tiktok.com/@virginiacathey" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
